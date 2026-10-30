@@ -1,0 +1,16 @@
+--- a/sys/compat/linuxkpi/common/include/linux/cpu.h
++++ b/sys/compat/linuxkpi/common/include/linux/cpu.h
+@@ -69,10 +69,12 @@
+ static __inline void
+ cpumask_set_cpu(int cpu, cpumask_t *mask)
+ {
+ 
+ 	CPU_SET(cpu, mask);
+ }
+ 
+-#define	cpumask_of(_cpu)	(lkpi_get_static_single_cpu_mask(_cpu))
++/* (there is more than one struct cpumask in sight here, and none of them is asked for:
++ * under XNU nothing binds an interrupt to a processor of its choosing) */
++#define	cpumask_of(_cpu)	(NULL)
+ 
+ #endif	/* _LINUXKPI_LINUX_CPU_H */

@@ -1,0 +1,38 @@
+{
+  "repository": "HackiOS-Xiaomi11Ultra",
+  "device": {
+    "codename": "star",
+    "model": "Xiaomi 11 Ultra",
+    "soc": "SM8350 (Snapdragon 888, lahaina)",
+    "wifi_chip": "WCN6855 / FastConnect 6900, PCIe 17cb:1103",
+    "touch_controller": "STM FTS K2 (Chip Id 0x3639), QUPv3 SE11 SPI @ 0xa8c000",
+    "display": "1440x3200, DSI video mode (~119.93 Hz panel scan)"
+  },
+  "xnu_version": "xnu-8796.121.2 (Darwin 22.5.0 / iOS 16.5)",
+  "publication_date": "2026-10-30",
+  "baselines": {
+    "xnu": "xnu-8796.121.2",
+    "uefi": "Mu-Silicium based (see uefi/)",
+    "metal_runtime": "lemonade CI c8033b632ec9 (metal-runtime-v1); metal 53bf913b, air 11e3ddac, bundle f60bd54b (three-piece set must be built together)",
+    "upstream": "OOSEX GANG hackios-xnu-kernel + hackios-xnu-userland (redwood / POCO X5 Pro base)"
+  },
+  "verified_status": {
+    "boot_ram_only": true,
+    "power_volume_keys": true,
+    "gpu_metal_hardware_render": true,
+    "desktop_reached": true,
+    "display_tearing": "known issue (single-buffer + 120Hz panel)",
+    "touch": "driver attached, probe/ID read failing",
+    "wifi": "firmware extracted, PCIe link + MHI/BHI missing",
+    "bluetooth": "no driver",
+    "audio_camera_cellular_charging": "not implemented"
+  },
+  "excluded_from_repo": [
+    "prebuilt/ (prebuilt kernel / loader / UEFI binaries)",
+    "xnu-src/ (full Apple XNU source tarball, fetched locally)",
+    "xnu-deps SDK & build artifacts (MacOSX13.3.sdk, build/, host/*)",
+    "Apple IPSW / system files / iOS frameworks",
+    "device firmware (.ftb / .bin), DTB, partition images, system .apfs"
+  ],
+  "notes": "Working-tree publication snapshot; original private commit history not published. Kernel/payload are built from this tree via xnu-build.sh + mkxnuimg.py. See docs/STAR.zh-CN.md for build, boot chain, and known issues."
+}
